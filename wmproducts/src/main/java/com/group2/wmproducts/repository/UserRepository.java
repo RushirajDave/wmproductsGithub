@@ -6,5 +6,5 @@ import com.group2.wmproducts.model.User;
 
 
 public interface UserRepository extends MongoRepository<User, String> {
-	public User findByFirstName(String fName);
+	public User findByFName(String fName);
 }

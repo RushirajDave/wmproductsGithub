@@ -9,7 +9,7 @@
 
 <div id="loginDiv">
 
-<form action="/action_page.php" method="post">
+<form th:action="@{/registration}" method="GET" commandName="registrationForm">
   <img alt="" src="../image/logo.png">  
   <div class="container">
   <h2 id="texcolr">Sign Up</h2>
@@ -21,18 +21,18 @@
     
     <label id="texcolr" for="last name"><b>Last name</b></label>
     <input type="text" placeholder="Enter your last name" name="lname" required>
-    
+    <!-- 
     <label id="texcolr" for="mobile"><b>Mobile number</b></label>
-    <input type="number" placeholder="Enter your mobile number" name="mobile" required>
+    <input type="number" placeholder="Enter your mobile number" name="mobile">
     
     <label id="texcolr" for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <input type="text" placeholder="Enter Email" name="email">
 
     <label id="texcolr" for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" name="psw">
 
     <label id="texcolr" for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <input type="password" placeholder="Repeat Password" name="psw-repeat"> -->
 	
     <label id="texcolr">
       <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
@@ -40,7 +40,8 @@
 
     <p id="texcolr">By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-    <button type="submit">Submit</button>
+    <button type="submit" >Submit</button>
+    <!-- onclick="location.href='http://localhost:8080/registration'" -->
   </div>
 
 </form>
