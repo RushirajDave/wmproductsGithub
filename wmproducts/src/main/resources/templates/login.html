@@ -8,16 +8,16 @@
 	<body>
 <div id="loginDiv">
 
-<form action="/action_page.php" method="post">
+<form action="#" th:action="@{/login}" method="post" th:object="${user}">
   <img alt="" src="../image/logo.png">
   <div class="container">
   <h2 id="texcolr"><label>Login</label></h2>
     <hr>
-    <label id="texcolr" for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <label id="texcolr" for="eMail"><b>User Email</b></label>
+    <input type="text" placeholder="Enter Username" th:field="*{eMail}" required>
 
     <label id="texcolr" for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <input type="password" placeholder="Enter Password" th:field="*{uPassword}" required>
         
     
     <label for="checkbox" id="texcolr" class="chekbox">
