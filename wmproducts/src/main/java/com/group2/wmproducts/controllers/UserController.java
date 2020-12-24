@@ -9,16 +9,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.group2.wmproducts.model.SessionData;
 import com.group2.wmproducts.model.UserBean;
 import com.group2.wmproducts.service.UserService;
 
 @Controller
-@SessionAttributes({"userdata"})
+@SessionAttributes({"sessiondata"})
 public class UserController {
 	
-	@ModelAttribute("userdata")
-	public UserBean userdata() {
-		return new UserBean();
+	@ModelAttribute("sessiondata")
+	public SessionData sessiondata() {
+		return new SessionData();
 	}
 	
 	@Autowired
@@ -32,9 +33,8 @@ public class UserController {
 	}
 	@PostMapping("/login")
 	public String verifyLogin(@ModelAttribute("user") UserBean user, Model model) {
-		UserBean userdata = new UserBean();
-		userdata.setfName(userService.verifyUser(user));
-		model.addAttribute("userdata", userdata);
+		SessionData sessiondata = new SessionData(userService.verifyUser(user));
+		model.addAttribute("sessiondata", sessiondata);
 	    return "home";
 	}
 	@GetMapping("/signup")
@@ -51,8 +51,7 @@ public class UserController {
 	    return "login";
 	}
 	@GetMapping("/home")
-	public String home(@SessionAttribute("Username") String uname) {
-		System.out.println("username ");
+	public String home() {
 		return "home";
 	}
 }
