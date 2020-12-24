@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="ISO-8859-1">
+		<title>Login</title>
+		<link rel="stylesheet" href="css/StyleSheet.css">
+	</head>
+<body>
+	<form action="#" th:action="@{/newProduct}" method="post" th:object="${product}">
+  <img alt="" src="../image/logo.png">
+  <div class="container">
+  <h2 id="texcolr"><label>New product</label></h2>
+    <hr>
+    <label id="texcolr" for="name"><b>Product name</b></label>
+    <input type="text" placeholder="Enter product name" th:field="*{productName}" required>
+
+    <label id="texcolr" for="category"><b>Category name</b></label>
+    <input type="text" placeholder="Enter product category" th:field="*{productCatagory}" required>
+     
+    <label id="texcolr" for="price"><b>Price</b></label>
+    <input type="text" placeholder="Enter product Price" th:field="*{productPrice}" required>
+    
+    <label id="texcolr" for="quantity"><b>Quantity</b></label>
+    <input type="text" placeholder="Enter product quantity" th:field="*{productQty}" required> 
+    
+    <label id="texcolr" for="seller"><b>Seller</b></label>
+    <input type="text" placeholder="Enter product seller" th:field="*{productSaller}" required>
+    
+    <label id="texcolr" for="description"><b>Description</b></label>
+    <input type="text" placeholder="Enter product description" th:field="*{productDiscription}" required>   
+
+
+    <button id="logbutton" type="submit">ADD</button>
+  </div>
+
+  <div class="container">
+    <a href=""  class="Forgotbtn">Forgot password?</a><br>
+    <a href="/signup"  class="Forgotbtn">Not registered?</a>
+    <!-- <span class="psw"> </span> -->
+  </div>
+</form>
+</body>
+</html>

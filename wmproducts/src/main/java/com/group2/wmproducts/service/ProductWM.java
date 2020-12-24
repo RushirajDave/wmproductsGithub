@@ -1,122 +1,76 @@
 package com.group2.wmproducts.service;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "products")
 public class ProductWM {
-	private String pId;
-	private String pName;
-	private String []pCatagory;
-	private String pPrice;
-	private String pQty;
-	private String pSaller;
-	private String pDiscription;
-	private float pAvrRating;
-	
-	public ProductWM(String pId, String pName, String[] pCatagory, String pPrice, String pQty, String pSaller,
-			String pDiscription, float pAvrRating) {
+	@Id
+	private String productId;
+	private String productName;
+	private String productCatagory;
+	private String productPrice;
+	private String productQty;
+	private String productSaller;
+	private String productDiscription;
+	private float productAvrRating;
+	public ProductWM(String productId, String productName, String productCatagory, String productPrice,
+			String productQty, String productSaller, String productDiscription, float productAvrRating) {
 		super();
-		this.pId = pId;
-		this.pName = pName;
-		this.pCatagory = pCatagory;
-		this.pPrice = pPrice;
-		this.pQty = pQty;
-		this.pSaller = pSaller;
-		this.pDiscription = pDiscription;
-		this.pAvrRating = pAvrRating;
+		this.productId = productId;
+		this.productName = productName;
+		this.productCatagory = productCatagory;
+		this.productPrice = productPrice;
+		this.productQty = productQty;
+		this.productSaller = productSaller;
+		this.productDiscription = productDiscription;
+		this.productAvrRating = productAvrRating;
 	}
-	/**
-	 * @return the pId
-	 */
-	public String getpId() {
-		return pId;
+	public String getProductId() {
+		return productId;
 	}
-	/**
-	 * @param pId the pId to set
-	 */
-	public void setpId(String pId) {
-		this.pId = pId;
+	public String getProductName() {
+		return productName;
 	}
-	/**
-	 * @return the pName
-	 */
-	public String getpName() {
-		return pName;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	/**
-	 * @param pName the pName to set
-	 */
-	public void setpName(String pName) {
-		this.pName = pName;
+	public String getProductCatagory() {
+		return productCatagory;
 	}
-	/**
-	 * @return the pCatagory
-	 */
-	public String[] getpCatagory() {
-		return pCatagory;
+	public void setProductCatagory(String productCatagory) {
+		this.productCatagory = productCatagory;
 	}
-	/**
-	 * @param pCatagory the pCatagory to set
-	 */
-	public void setpCatagory(String[] pCatagory) {
-		this.pCatagory = pCatagory;
+	public String getProductPrice() {
+		return productPrice;
 	}
-	/**
-	 * @return the pPrice
-	 */
-	public String getpPrice() {
-		return pPrice;
+	public void setProductPrice(String productPrice) {
+		this.productPrice = productPrice;
 	}
-	/**
-	 * @param pPrice the pPrice to set
-	 */
-	public void setpPrice(String pPrice) {
-		this.pPrice = pPrice;
+	public String getProductQty() {
+		return productQty;
 	}
-	/**
-	 * @return the pQty
-	 */
-	public String getpQty() {
-		return pQty;
+	public void setProductQty(String productQty) {
+		this.productQty = productQty;
 	}
-	/**
-	 * @param pQty the pQty to set
-	 */
-	public void setpQty(String pQty) {
-		this.pQty = pQty;
+	public String getProductSaller() {
+		return productSaller;
 	}
-	/**
-	 * @return the pSaller
-	 */
-	public String getpSaller() {
-		return pSaller;
+	public void setProductSaller(String productSaller) {
+		this.productSaller = productSaller;
 	}
-	/**
-	 * @param pSaller the pSaller to set
-	 */
-	public void setpSaller(String pSaller) {
-		this.pSaller = pSaller;
+	public String getProductDiscription() {
+		return productDiscription;
 	}
-	/**
-	 * @return the pDiscription
-	 */
-	public String getpDiscription() {
-		return pDiscription;
+	public void setProductDiscription(String productDiscription) {
+		this.productDiscription = productDiscription;
 	}
-	/**
-	 * @param pDiscription the pDiscription to set
-	 */
-	public void setpDiscription(String pDiscription) {
-		this.pDiscription = pDiscription;
+	public float getProductAvrRating() {
+		return productAvrRating;
 	}
-	/**
-	 * @return the pAvrRating
-	 */
-	public float getpAvrRating() {
-		return pAvrRating;
+	public void setProductAvrRating(float productAvrRating) {
+		this.productAvrRating = productAvrRating;
 	}
-	/**
-	 * @param pAvrRating the pAvrRating to set
-	 */
-	public void setpAvrRating(float pAvrRating) {
-		this.pAvrRating = pAvrRating;
-	}
+	
 	
 }
