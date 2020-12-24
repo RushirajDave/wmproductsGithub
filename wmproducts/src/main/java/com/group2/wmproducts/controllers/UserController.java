@@ -33,8 +33,8 @@ public class UserController {
 	}
 	@PostMapping("/login")
 	public String verifyLogin(@ModelAttribute("user") UserBean user, Model model) {
-		SessionData sessiondata = new SessionData(userService.verifyUser(user));
-		model.addAttribute("sessiondata", sessiondata);
+		SessionData sessionEmailID = new SessionData(userService.verifyUser(user));
+		model.addAttribute("sessiondata", sessionEmailID);
 	    return "home";
 	}
 	@GetMapping("/signup")

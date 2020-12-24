@@ -26,15 +26,17 @@ public class UserServiceImpl implements UserService {
 	public String verifyUser(UserBean user) {
 		String userPass = user.getuPassword();
 		UserWM usermongo = userRepository.findByUserEmail(user.geteMail());
-		String dbUserId;
-		String dbPass = usermongo.getUserPassword();
-		if(userPass.equals(dbPass)) {
-			System.out.println("Login done");
-			dbUserId = usermongo.getId();
-		} else {
-			System.out.println("Login not done");
-			dbUserId = "";
+		String dbUserEmailId = null;
+		if(usermongo != null) {
+			String dbPass = usermongo.getUserPassword();
+			if(userPass.equals(dbPass)) {
+				System.out.println("Login done");
+				dbUserEmailId = usermongo.getUserEmail();
+			} else {
+				System.out.println("Login not done");
+				dbUserEmailId = "";
+			}
 		}
-		return dbUserId;
+		return dbUserEmailId;
 	}
 }
