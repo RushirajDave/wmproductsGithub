@@ -1,12 +1,12 @@
 package com.group2.wmproducts.model;
 
 public class UserBean {
-	public String id;
-	public String fName;
-	public String lName;
-	public String mNumber;
-	public String eMail;
-	public String uPassword;
+	private String id;
+	private String fName;
+	private String lName;
+	private String mNumber;
+	private String eMail;
+	private String uPassword;
 	
 	
 	public UserBean(String fName, String lName, String mNumber, String eMail, String uPassword) {

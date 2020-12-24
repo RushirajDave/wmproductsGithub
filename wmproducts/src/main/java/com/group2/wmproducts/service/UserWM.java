@@ -6,12 +6,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "users")
 public class UserWM {
 	@Id
-	public String id;
-	public String firstName;
-	public String lastName;
-	public String mobileNumber;
-	public String userEmail;
-	public String userPassword;
+	private String id;
+	private String firstName;
+	private String lastName;
+	private String mobileNumber;
+	private String userEmail;
+	private String userPassword;
 	
 	public UserWM(String firstName, String lastName, String mobileNumber, String userEmail, String userPassword) {
 		super();
