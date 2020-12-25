@@ -6,11 +6,14 @@
 		<link rel="stylesheet" href="css/StyleSheet.css">
 	</head>
 <body>
-	<form action="#" th:action="@{/newProduct}" method="post" th:object="${product}">
+<form action="#" th:action="@{/newProduct}" method="post" th:object="${product}" enctype="multipart/form-data">
   <img alt="" src="../image/logo.png">
   <div class="container">
   <h2 id="texcolr"><label>New product</label></h2>
     <hr>
+    <label id="texcolr" for="image"><b>Product image</b></label>
+    <input type="file" placeholder="Select product image" th:name="productImg" required>
+    
     <label id="texcolr" for="name"><b>Product name</b></label>
     <input type="text" placeholder="Enter product name" th:field="*{productName}" required>
 
@@ -28,7 +31,6 @@
     
     <label id="texcolr" for="description"><b>Description</b></label>
     <input type="text" placeholder="Enter product description" th:field="*{productDiscription}" required>   
-
 
     <button id="logbutton" type="submit">ADD</button>
   </div>

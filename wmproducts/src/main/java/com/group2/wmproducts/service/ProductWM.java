@@ -1,5 +1,6 @@
 package com.group2.wmproducts.service;
 
+import org.bson.types.Binary;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,17 +9,22 @@ public class ProductWM {
 	@Id
 	private String productId;
 	private String productName;
+	private Binary productImage;
 	private String productCatagory;
 	private String productPrice;
 	private String productQty;
 	private String productSaller;
 	private String productDiscription;
 	private float productAvrRating;
-	public ProductWM(String productId, String productName, String productCatagory, String productPrice,
-			String productQty, String productSaller, String productDiscription, float productAvrRating) {
+	
+	
+	public ProductWM(String productId, String productName, Binary productImage, String productCatagory,
+			String productPrice, String productQty, String productSaller, String productDiscription,
+			float productAvrRating) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
+		this.productImage = productImage;
 		this.productCatagory = productCatagory;
 		this.productPrice = productPrice;
 		this.productQty = productQty;
@@ -34,6 +40,12 @@ public class ProductWM {
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	public Binary getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(Binary productImage) {
+		this.productImage = productImage;
 	}
 	public String getProductCatagory() {
 		return productCatagory;

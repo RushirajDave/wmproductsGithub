@@ -1,8 +1,13 @@
 package com.group2.wmproducts.model;
 
+import org.bson.types.Binary;
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductBean {
 	private String productId;
 	private String productName;
+	private Binary productImage;
+	private String productImageBase64;
 	private String productCatagory;
 	private String productPrice;
 	private String productQty;
@@ -14,10 +19,13 @@ public class ProductBean {
 	public ProductBean() {
 		super();
 	}
-	public ProductBean(String productName, String productCatagory, String productPrice, String productQty,
-			String productSaller, String productDiscription, String productAvrRating) {
+	public ProductBean(String productName, Binary productImage, String productImageBase64, String productCatagory,
+			String productPrice, String productQty, String productSaller, String productDiscription,
+			String productAvrRating) {
 		super();
 		this.productName = productName;
+		this.productImage = productImage;
+		this.productImageBase64 = productImageBase64;
 		this.productCatagory = productCatagory;
 		this.productPrice = productPrice;
 		this.productQty = productQty;
@@ -25,6 +33,9 @@ public class ProductBean {
 		this.productDiscription = productDiscription;
 		this.productAvrRating = productAvrRating;
 	}
+
+
+
 	public String getProductId() {
 		return productId;
 	}
@@ -33,6 +44,18 @@ public class ProductBean {
 	}
 	public void setProductName(String productName) {
 		this.productName = productName;
+	}
+	public Binary getProductImage() {
+		return productImage;
+	}
+	public void setProductImage(Binary productImage) {
+		this.productImage = productImage;
+	}
+	public String getProductImageBase64() {
+		return productImageBase64;
+	}
+	public void setProductImageBase64(String productImageBase64) {
+		this.productImageBase64 = productImageBase64;
 	}
 	public String getProductCatagory() {
 		return productCatagory;
@@ -70,4 +93,14 @@ public class ProductBean {
 	public void setProductAvrRating(String productAvrRating) {
 		this.productAvrRating = productAvrRating;
 	}
+	@Override
+	public String toString() {
+		return "ProductBean [productId=" + productId + ", productName=" + productName + ", productImage=" + productImage
+				+ ", productImageBase64=" + productImageBase64 + ", productCatagory=" + productCatagory
+				+ ", productPrice=" + productPrice + ", productQty=" + productQty + ", productSaller=" + productSaller
+				+ ", productDiscription=" + productDiscription + ", productAvrRating=" + productAvrRating + "]";
+	}
+
+	
+	
 }

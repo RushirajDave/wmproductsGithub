@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Product View</title>
+</head>
+<body>
+	<img width="200" height="200" alt="sample" th:src="*{'data:image/png;base64,'+productImg}" />
+    <h2>Name - <span th:text="${product.productName}"></span></h2>
+    <h2>Price -  <span th:text="${product.productPrice}"></span></h2>
+</body>
+</html>
