@@ -1,7 +1,6 @@
 package com.group2.wmproducts.model;
 
 import org.bson.types.Binary;
-import org.springframework.web.multipart.MultipartFile;
 
 public class ProductBean {
 	private String productId;

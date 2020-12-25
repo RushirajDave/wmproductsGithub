@@ -1,10 +1,9 @@
 package com.group2.wmproducts.controllers;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
-import org.bson.BsonBinarySubType;
-import org.bson.types.Binary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.group2.wmproducts.model.ProductBean;
 import com.group2.wmproducts.service.ProductService;
-import com.group2.wmproducts.service.ProductWM;
 
 @Controller
 public class ProductController {
@@ -48,8 +46,13 @@ public class ProductController {
 	
 	@GetMapping("/WMProducts")
 	public String searchProducts(Model model) {
-		List<ProductBean> productBeanList = productService.searchProducts();
+		List<ProductBean> productBeanList = productService.getAllProducts();
+		List<String> productImg = new ArrayList<String>();
 		System.out.println(productBeanList.toString());
+		for(int i=0; i<productBeanList.size(); i++) {
+			productImg.add(Base64.getEncoder().encodeToString(productBeanList.get(i).getProductImage().getData()));
+			model.addAttribute("productImg", productImg );
+		}
         model.addAttribute("productList", productBeanList);
 		return "index";
 	}

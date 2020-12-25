@@ -2,7 +2,6 @@ package com.group2.wmproducts.service;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.List;
 
 import org.bson.BsonBinarySubType;
@@ -43,16 +42,12 @@ public class ProductServiceImpl implements ProductService {
 	}
 
 	@Override
-	public List<ProductBean> searchProducts() {
+	public List<ProductBean> getAllProducts() {
 		// TODO Auto-generated method stub
 		List<ProductBean> productList = new ArrayList<ProductBean>();
 		List<ProductWM> productmongoList = productRepository.findAll();
 		for (int i=0; i<productmongoList.size(); i++) {
-			System.out.println(productmongoList.get(i).getProductImage());
-			String ImageBase64 = Base64.getEncoder().encodeToString(productmongoList.get(i).getProductImage().getData());
-			System.out.println(ImageBase64);
-			System.out.println(i);
-			ProductBean product= new ProductBean(productmongoList.get(i).getProductName(), productmongoList.get(i).getProductImage(), ImageBase64, productmongoList.get(i).getProductCatagory(), productmongoList.get(i).getProductPrice(), productmongoList.get(i).getProductQty(), productmongoList.get(i).getProductSaller(), productmongoList.get(i).getProductDiscription(), null);
+			ProductBean product= new ProductBean(productmongoList.get(i).getProductName(), productmongoList.get(i).getProductImage(), null, productmongoList.get(i).getProductCatagory(), productmongoList.get(i).getProductPrice(), productmongoList.get(i).getProductQty(), productmongoList.get(i).getProductSaller(), productmongoList.get(i).getProductDiscription(), null);
             productList.add(product);
 		}
 		return productList;

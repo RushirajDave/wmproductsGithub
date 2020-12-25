@@ -9,5 +9,5 @@ import com.group2.wmproducts.model.ProductBean;
 public interface ProductService {
 	public abstract void newProduct(ProductBean product, MultipartFile productImg);
 	public abstract ProductBean findProduct(String productId);
-	public abstract List<ProductBean> searchProducts();
+	public abstract List<ProductBean> getAllProducts();
 }
