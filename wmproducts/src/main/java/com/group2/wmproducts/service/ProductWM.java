@@ -10,7 +10,10 @@ public class ProductWM {
 	private String productId;
 	private String productName;
 	private Binary productImage;
-	private String productCatagory;
+	private String productType;
+	private String productColor;
+	private String productSize;
+	private String productBrand;
 	private String productPrice;
 	private String productQty;
 	private String productSaller;
@@ -18,14 +21,17 @@ public class ProductWM {
 	private float productAvrRating;
 	
 	
-	public ProductWM(String productId, String productName, Binary productImage, String productCatagory,
-			String productPrice, String productQty, String productSaller, String productDiscription,
-			float productAvrRating) {
+	public ProductWM(String productId, String productName, Binary productImage, String productType, String productColor,
+			String productSize, String productBrand, String productPrice, String productQty, String productSaller,
+			String productDiscription, float productAvrRating) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productImage = productImage;
-		this.productCatagory = productCatagory;
+		this.productType = productType;
+		this.productColor = productColor;
+		this.productSize = productSize;
+		this.productBrand = productBrand;
 		this.productPrice = productPrice;
 		this.productQty = productQty;
 		this.productSaller = productSaller;
@@ -47,11 +53,29 @@ public class ProductWM {
 	public void setProductImage(Binary productImage) {
 		this.productImage = productImage;
 	}
-	public String getProductCatagory() {
-		return productCatagory;
+	public String getProductType() {
+		return productType;
 	}
-	public void setProductCatagory(String productCatagory) {
-		this.productCatagory = productCatagory;
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public String getProductColor() {
+		return productColor;
+	}
+	public void setProductColor(String productColor) {
+		this.productColor = productColor;
+	}
+	public String getProductSize() {
+		return productSize;
+	}
+	public void setProductSize(String productSize) {
+		this.productSize = productSize;
+	}
+	public String getProductBrand() {
+		return productBrand;
+	}
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
 	}
 	public String getProductPrice() {
 		return productPrice;
@@ -83,6 +107,5 @@ public class ProductWM {
 	public void setProductAvrRating(float productAvrRating) {
 		this.productAvrRating = productAvrRating;
 	}
-	
 	
 }

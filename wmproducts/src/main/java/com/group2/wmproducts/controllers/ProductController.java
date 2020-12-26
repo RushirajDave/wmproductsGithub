@@ -11,9 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.group2.wmproducts.model.ProductBean;
+import com.group2.wmproducts.model.SessionData;
 import com.group2.wmproducts.service.ProductService;
 
 @Controller
@@ -37,10 +40,11 @@ public class ProductController {
 	}
 	
 	@GetMapping("/Product")
-	public String Product(@RequestParam(value = "productId", required = true) String productId, Model model) {
+	public String Product(@SessionAttribute("sessiondata") SessionData sessiondata, @RequestParam(value = "productId", required = true) String productId, Model model) {
 		ProductBean product = productService.findProduct(productId);
         model.addAttribute("product", product);
         model.addAttribute("productImg", Base64.getEncoder().encodeToString(product.getProductImage().getData()) );
+        System.out.println(sessiondata.userEmailId);
 		return "viewProduct";
 	}
 	
@@ -55,5 +59,11 @@ public class ProductController {
 		}
         model.addAttribute("productList", productBeanList);
 		return "index";
+	}
+	
+	@GetMapping("/deleteProduct")
+	public String deleteProduct(@RequestParam(value = "productId", required = true) String productId, Model model) {
+		productService.deleteProduct(productId);
+		return "viewProduct";
 	}
 }

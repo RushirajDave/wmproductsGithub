@@ -6,35 +6,36 @@ public class ProductBean {
 	private String productId;
 	private String productName;
 	private Binary productImage;
-	private String productImageBase64;
-	private String productCatagory;
+	private String productType;
+	private String productColor;
+	private String productSize;
+	private String productBrand;
 	private String productPrice;
 	private String productQty;
 	private String productSaller;
 	private String productDiscription;
 	private String productAvrRating;
 	
-	
 	public ProductBean() {
 		super();
 	}
-	public ProductBean(String productName, Binary productImage, String productImageBase64, String productCatagory,
-			String productPrice, String productQty, String productSaller, String productDiscription,
-			String productAvrRating) {
+	public ProductBean(String productId, String productName, Binary productImage, String productType,
+			String productColor, String productSize, String productBrand, String productPrice, String productQty,
+			String productSaller, String productDiscription, String productAvrRating) {
 		super();
+		this.productId = productId;
 		this.productName = productName;
 		this.productImage = productImage;
-		this.productImageBase64 = productImageBase64;
-		this.productCatagory = productCatagory;
+		this.productType = productType;
+		this.productColor = productColor;
+		this.productSize = productSize;
+		this.productBrand = productBrand;
 		this.productPrice = productPrice;
 		this.productQty = productQty;
 		this.productSaller = productSaller;
 		this.productDiscription = productDiscription;
 		this.productAvrRating = productAvrRating;
 	}
-
-
-
 	public String getProductId() {
 		return productId;
 	}
@@ -47,20 +48,32 @@ public class ProductBean {
 	public Binary getProductImage() {
 		return productImage;
 	}
+	public String getProductType() {
+		return productType;
+	}
+	public void setProductType(String productType) {
+		this.productType = productType;
+	}
+	public String getProductColor() {
+		return productColor;
+	}
+	public void setProductColor(String productColor) {
+		this.productColor = productColor;
+	}
+	public String getProductSize() {
+		return productSize;
+	}
+	public void setProductSize(String productSize) {
+		this.productSize = productSize;
+	}
+	public String getProductBrand() {
+		return productBrand;
+	}
+	public void setProductBrand(String productBrand) {
+		this.productBrand = productBrand;
+	}
 	public void setProductImage(Binary productImage) {
 		this.productImage = productImage;
-	}
-	public String getProductImageBase64() {
-		return productImageBase64;
-	}
-	public void setProductImageBase64(String productImageBase64) {
-		this.productImageBase64 = productImageBase64;
-	}
-	public String getProductCatagory() {
-		return productCatagory;
-	}
-	public void setProductCatagory(String productCatagory) {
-		this.productCatagory = productCatagory;
 	}
 	public String getProductPrice() {
 		return productPrice;
@@ -95,11 +108,9 @@ public class ProductBean {
 	@Override
 	public String toString() {
 		return "ProductBean [productId=" + productId + ", productName=" + productName + ", productImage=" + productImage
-				+ ", productImageBase64=" + productImageBase64 + ", productCatagory=" + productCatagory
-				+ ", productPrice=" + productPrice + ", productQty=" + productQty + ", productSaller=" + productSaller
-				+ ", productDiscription=" + productDiscription + ", productAvrRating=" + productAvrRating + "]";
+				+ ", productType=" + productType + ", productColor=" + productColor + ", productSize=" + productSize
+				+ ", productBrand=" + productBrand + ", productPrice=" + productPrice + ", productQty=" + productQty
+				+ ", productSaller=" + productSaller + ", productDiscription=" + productDiscription
+				+ ", productAvrRating=" + productAvrRating + "]";
 	}
-
-	
-	
 }

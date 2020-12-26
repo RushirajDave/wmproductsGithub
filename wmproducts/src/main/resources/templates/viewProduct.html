@@ -57,32 +57,34 @@
 
       <div style="margin-top: 50px;"></div>
       <div class="container align-self-center p-3 mt-3 ">
-          <h3 style="text-align: center;">Our Products</h3>
+          <h3 style="text-align: center;" th:text="${product.productName}"></h3>
+      </div>    
+
+
+      <div class="container align-self-center p-3 mt-3" style="text-align: center;">
+
+            <img height="300" alt="Product image" th:src="*{'data:image/png;base64,'+productImg}"> 
+
+            <div class="container align-self-center p-1 mt-1" style="text-align: center;">
+            <form th:action="@{/addToCart}" method="post">  
+              <input type="hidden"  th:value="${product.productId}" th:name="productId" required>
+              <input type="text" value="1" th:name="productQty" required>
+              <button type="submit" class="align-self-center">Add to Cart</button>
+            </form>
+            </div>
+            <div class="container align-self-center p-1 mt-1" style="text-align: center;">
+              <button class="align-self-center">Add to Wishlist</button>
+            </div>
+            <h3>Price: <span th:text="${product.productPrice}"></span></h3> 
+            <h3>Type: <span th:text="${product.productType}"></span></h3>
+            <h3>Color: <span th:text="${product.productColor}"></span></h3>
+            <h3>Company: <span th:text="${product.productBrand}"></span></h3>
+            <h3>Description: <span th:text="${product.productDiscription}"></span></h3>
       </div>
-      <div class="container p-3 mt-3">
-        <div class="row p-3">
-          <div class="container p-3 bg-dark text-white col-sm-4" th:each="product, index : ${productList}">
-          	<form id="productForm" th:action="@{/Product}" method="get">
-          			<input type="hidden"  th:value="${product.productId}" th:name="productId" required>
-          		<button class="productcard col-sm-12" type=submit>
-          			<div>
-          				<img width="200px" th:src="*{'data:image/png;base64,'+productImg[index.index]}" alt="First Product">
-          			</div>
-            		<div>
-                		<h6 th:text="${product.productName}"></h6>
-            		</div>
-            		<div>
-                		<h3 th:text="${product.productPrice}"></h3>
-            		</div>		
-            	</button>
-          	</form>
-          </div>
-        </div>
-      </div>
-      
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+    <script src="js/main.js.js"></script>
 </body>
 </html>

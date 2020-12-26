@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7812885230.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/OrderHistory.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark justify-content-sm-start bg-primary navbar-dark fixed-top">
+
+        <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 mr-auto" href="#">WM Products</a>
+
+        <button class="navbar-toggler align-self-start" type="button">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+      
+        <div class="collapse navbar-collapse d-flex flex-column bg-dark flex-lg-row flex-xl-row justify-content-lg-end mobileMenu p-3 p-lg-0 mt-5 mt-lg-0 open" id="navbarSupportedContent">
+
+          <ul class="navbar-nav align-self-stretch">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0 mr-sm-2">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/WMProducts}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-home"></i>Home</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/cart}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Cart</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/myOrders}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-gifts"></i>Orders</button>
+            </form>
+            </li>
+            
+            <li class="nav-item">
+            <form th:action="@{/logout}" method="get">
+              <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i>Logout</button>
+            </form>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="overlay"></div>
+
+      <div style="margin-top: 50px;"></div>
+      
+<!-- 
+      <div class="container  rounded-right  ">
+        <div class="d-flex p-3 bg-secondary text-white justify-content-between mb-3">
+          <div class="p-2 bg-info"><img src="pic1.webp" width="100px" class="img-thumbnail float-left" alt="your product"></div>
+          <div class="p-2 col bg-warning">
+            <h4>Product Name <small><i>sub details</i></small></h4>
+          <p>details Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate </p>   </div>
+          <div class="p-5 col-1 ">
+            <button type="button" class="btn btn-danger">Remove</button>
+          </div>          
+        </div>
+      </div>
+      <div class="container  rounded-right border border-danger ">
+        <div class="d-flex p-3 bg-secondary text-white justify-content-between mb-3">
+          <div class="p-2 bg-info"><img src="pic1.webp" width="100px" class="img-thumbnail float-left" alt="your product"></div>
+          <div class="p-2 col bg-warning">Flex item 2</div>
+          <div class="p-2 col-2">
+            <div class="col-6 bg-danger"><button type="button" class="btn btn-danger">Remove</button></div>
+            <div class="col-6 bg-success"><button type="button" class="btn btn-success">Check out</button></div>
+          </div>          
+        </div>
+      </div>
+      <div class="container  rounded-right border border-danger ">
+        <div class="d-flex p-3 bg-secondary text-white justify-content-between mb-3">
+          <div class="p-2 bg-info"><img src="pic1.webp" width="100px" class="img-thumbnail float-left" alt="your product"></div>
+          <div class="p-2 col bg-warning">Flex item 2</div>
+          <div class="p-2 col-2">
+            <div class="col-6 bg-danger"><button type="button" class="btn btn-danger">Remove</button></div>
+            <div class="col-6 bg-success"><button type="button" class="btn btn-success">Check out</button></div>
+          </div>          
+        </div>
+      </div>
+
+      <div class="container mt-3">
+        <div class="media border p-3">
+         <img src="pic1.webp" alt="your product" class="mr-3 mt-3 rounded-circle" style="width:100px;">
+        <div class="media-body">
+          <h4>Product Name <small><i>sub details</i></small></h4>
+          <p>details Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>      
+        </div>
+        <div class="p-2 col-2">
+            <div class="col-6 bg-danger"><button type="button" class="btn btn-danger">Remove</button></div>
+            <div class="col-6 bg-success"><button type="button" class="btn btn-success">Check out</button></div>
+        </div>
+      </div>
+    </div>
+    <div class="container align-self-center p-3 mt-3 " >
+      <button style="display: flex;  ;text-align: center;" type="button" class="btn btn-success">Check out</button>
+    </div>
+<div class="container  rounded-right border border-danger ">
+        <div class="d-flex p-3 bg-secondary text-white justify-content-between mb-3">
+          <div class="p-2 bg-info"><img src="pic1.webp" width="100px" class="img-thumbnail float-left" alt="your product"></div>
+          <div class="p-2 col bg-warning">Flex item 2</div>
+          <div class="p-2 col-2">
+            <div class="col-6 bg-danger"><button type="button" class="btn btn-danger">Remove</button></div>
+            <div class="col-6 bg-success"><button type="button" class="btn btn-success">Check out</button></div>
+          </div>          
+        </div>
+      </div> -->
+
+ <div class="cart_section">
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-10 offset-lg-1">
+                 <div class="cart_container">
+                     <div class="cart_title">Your Orders<small> (1 item in your Orders) </small></div>
+                     <div class="cart_items"> <!--1 one item-->
+                         <ul class="cart_list">
+                             <li class="cart_item clearfix">
+                                 <div class="cart_item_image  d-flex flex-md-row flex-column justify-content-between"><img src="https://res.cloudinary.com/dxfq3iotg/image/upload/v1560924153/alcatel-smartphones-einsteiger-mittelklasse-neu-3m.jpg" alt=""></div>
+                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                     <div class="cart_item_name cart_info_col">
+                                         <div class="cart_item_title">Name</div>
+                                         <div class="cart_item_text">Samsung C7 Pro</div>
+                                     </div>
+                                     <div class="cart_item_color cart_info_col  d-flex flex-md-row flex-column justify-content-between">
+                                         <div class="cart_item_title">Detail</div>
+                                         <div class="cart_item_text"><span style="background-color:#999999;"></span>Silver</div>
+                                     </div>
+                                     <div class="cart_item_quantity cart_info_col  d-flex flex-md-row flex-column justify-content-between">
+                                         <div class="cart_item_title">Quantity</div>
+                                         <div class="cart_item_text">1</div>
+                                     </div>
+                                     <div class="cart_item_price cart_info_col  d-flex flex-md-row flex-column justify-content-between">
+                                         <div class="cart_item_title">Price</div>
+                                         <div class="cart_item_text">₹22000</div>
+                                     </div>
+                                     <div class="cart_item_total cart_info_col  d-flex flex-md-row flex-column justify-content-between">
+                                         <div class="cart_item_title">Total</div>
+                                         <div class="cart_item_text">₹22000</div>
+                                     </div>
+                                     <div class="cart_item_total cart_info_col  d-flex flex-md-row flex-column justify-content-between">
+                                           
+                    
+                                     </div>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                
+                    
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

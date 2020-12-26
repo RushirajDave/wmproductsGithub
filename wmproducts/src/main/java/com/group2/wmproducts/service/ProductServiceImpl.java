@@ -24,7 +24,7 @@ public class ProductServiceImpl implements ProductService {
 		
 		try {
 			Binary BinaryProductImage = new Binary(BsonBinarySubType.BINARY, productImg.getBytes());
-			ProductWM productmongo = new ProductWM(product.getProductId(), product.getProductName(), BinaryProductImage, product.getProductCatagory(), product.getProductPrice(), product.getProductQty(), product.getProductSaller(), product.getProductDiscription(), 0);
+			ProductWM productmongo = new ProductWM(product.getProductId(), product.getProductName(), BinaryProductImage, product.getProductType(), product.getProductColor(), product.getProductSize(), product.getProductBrand(), product.getProductPrice(), product.getProductQty(), product.getProductSaller(), product.getProductDiscription(), 0);
 			this.productRepository.save(productmongo);
 			System.out.println("user saved in Mongodb");
 		} catch (IOException e) {
@@ -37,7 +37,7 @@ public class ProductServiceImpl implements ProductService {
 	public ProductBean findProduct(String productId) {
 		// TODO Auto-generated method stub
 		ProductWM productmongo = productRepository.findByProductId(productId);
-		ProductBean product = new ProductBean(productmongo.getProductName(), productmongo.getProductImage(), null, productmongo.getProductCatagory(), productmongo.getProductPrice(), productmongo.getProductQty(), productmongo.getProductSaller(), productmongo.getProductDiscription(), null);
+		ProductBean product = new ProductBean(productmongo.getProductId(), productmongo.getProductName(), productmongo.getProductImage(), productmongo.getProductType(), productmongo.getProductColor(), productmongo.getProductSize(), productmongo.getProductBrand(), productmongo.getProductPrice(), productmongo.getProductQty(), productmongo.getProductSaller(), productmongo.getProductDiscription(), null);
 		return product;
 	}
 
@@ -47,10 +47,21 @@ public class ProductServiceImpl implements ProductService {
 		List<ProductBean> productList = new ArrayList<ProductBean>();
 		List<ProductWM> productmongoList = productRepository.findAll();
 		for (int i=0; i<productmongoList.size(); i++) {
-			ProductBean product= new ProductBean(productmongoList.get(i).getProductName(), productmongoList.get(i).getProductImage(), null, productmongoList.get(i).getProductCatagory(), productmongoList.get(i).getProductPrice(), productmongoList.get(i).getProductQty(), productmongoList.get(i).getProductSaller(), productmongoList.get(i).getProductDiscription(), null);
+			ProductBean product= new ProductBean(productmongoList.get(i).getProductId(), productmongoList.get(i).getProductName(), productmongoList.get(i).getProductImage(), productmongoList.get(i).getProductType(), productmongoList.get(i).getProductColor(), productmongoList.get(i).getProductSize(), productmongoList.get(i).getProductBrand(), productmongoList.get(i).getProductPrice(), productmongoList.get(i).getProductQty(), productmongoList.get(i).getProductSaller(), productmongoList.get(i).getProductDiscription(), null);
             productList.add(product);
 		}
 		return productList;
 	}
 
+	@Override
+	public void deleteProduct(String productId) {
+		// TODO Auto-generated method stub
+		
+		try {
+			productRepository.deleteById(productId);
+		}
+		catch(Exception e){
+			System.out.println("Something went wrong.");
+		}
+	}
 }
