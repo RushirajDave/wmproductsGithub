@@ -12,6 +12,10 @@ public class OrderWM {
 	private String productQty;
 	private Integer totalPrice;
 	private String orderAddress;
+	
+	public OrderWM() {
+		super();
+	}
 	public OrderWM(String orderId, String userId, String productId, String productQty, Integer totalPrice,
 			String orderAddress) {
 		super();

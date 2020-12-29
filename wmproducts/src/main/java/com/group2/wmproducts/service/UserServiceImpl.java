@@ -1,16 +1,12 @@
 package com.group2.wmproducts.service;
 
-import java.util.ArrayList;
+
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.group2.wmproducts.model.ProductBean;
-import com.group2.wmproducts.model.SessionData;
 import com.group2.wmproducts.model.UserBean;
 import com.group2.wmproducts.repository.CartRepository;
 import com.group2.wmproducts.repository.ProductRepository;
@@ -82,6 +78,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public String removeFromCart(String userId, String productId) {
+		// TODO Auto-generated method stub
+		CartWM cartmongo = cartRepository.findByUserId(userId);
+		HashMap<String, Integer> cartProducts = cartmongo.getCartProducts();
+		cartProducts.remove(productId);
+		cartmongo.setCartProducts(cartProducts);
+		this.cartRepository.save(cartmongo);
+		return null;
+	}
+
+	@Override
 	public HashMap<String, Integer> getCartProducts(String userId) {
 		// TODO Auto-generated method stub
 		CartWM cartmongo = cartRepository.findByUserId(userId);
@@ -92,6 +99,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ProductBean getCartProduct(String productId) {
 		// TODO Auto-generated method stub
+		System.out.println(productId);
 		ProductWM productmongo = productRepository.findByProductId(productId);
 		ProductBean product = new ProductBean(productmongo.getProductId(), productmongo.getProductName(), productmongo.getProductImage(), productmongo.getProductType(), productmongo.getProductColor(), productmongo.getProductSize(), productmongo.getProductBrand(), productmongo.getProductPrice(), productmongo.getProductQty(), productmongo.getProductSaller(), productmongo.getProductDiscription(), null);
 		return product;

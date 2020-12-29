@@ -81,7 +81,7 @@
                                      </div>
                                      <div class="cart_item_quantity cart_info_col">
                                          <div class="cart_item_title">Quantity</div>
-                                         <div class="cart_item_text">1</div>
+                                         <div class="cart_item_text" th:text="${mycartQty[index.index]}"></div>
                                      </div>
                                      <div class="cart_item_total cart_info_col">
                                          <div class="cart_item_title">Size</div>
@@ -92,7 +92,10 @@
                                          <div class="cart_item_text" th:text="${product.productPrice}"></div>
                                      </div>
                                      <div class="cart_item_total cart_info_col">
-                                         <div class="cart_item_title p-5 col-2"><button type="button" class="btn btn-danger">Remove</button></div>
+                                     	<form  th:action="@{/removeFromCart}" method="post">
+                                       		<input type="hidden" th:name="productId" th:value="${product.productId}">              		
+                                     		<div class="cart_item_title p-5 col-2"><button type="submit" class="btn btn-danger">Remove</button></div>
+                                     	</form>
                                      </div>
                                  </div>
                              </li>
@@ -101,10 +104,9 @@
                      <div class="order_total">
                          <div class="order_total_content text-md-right">
                              <div class="order_total_title">Order Total:</div>
-                             <div class="order_total_amount">₹22000</div>
+                             <div class="order_total_amount" th:text="${cartTotal}"></div>
                          </div>
                      </div>
-                     <div class="cart_buttons"> <button type="button" class="button cart_button_clear">Continue Shopping</button>
                      <form  th:action="@{/newOrder}" method="post">
                      	<button type="submit" class="button cart_button_checkout">Check Out</button> 
                      </form>

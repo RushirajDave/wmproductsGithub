@@ -52,6 +52,20 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return productList;
 	}
+	
+
+	@Override
+	public List<ProductBean> getSearchProducts(String search) {
+		// TODO Auto-generated method stub
+		List<ProductBean> productList = new ArrayList<ProductBean>();
+		System.out.println(search);
+		List<ProductWM> productmongoList = productRepository.findByProductNameLike(search);
+		for (int i=0; i<productmongoList.size(); i++) {
+			ProductBean product= new ProductBean(productmongoList.get(i).getProductId(), productmongoList.get(i).getProductName(), productmongoList.get(i).getProductImage(), productmongoList.get(i).getProductType(), productmongoList.get(i).getProductColor(), productmongoList.get(i).getProductSize(), productmongoList.get(i).getProductBrand(), productmongoList.get(i).getProductPrice(), productmongoList.get(i).getProductQty(), productmongoList.get(i).getProductSaller(), productmongoList.get(i).getProductDiscription(), null);
+            productList.add(product);
+		}
+		return productList;
+	}
 
 	@Override
 	public void deleteProduct(String productId) {
@@ -62,6 +76,20 @@ public class ProductServiceImpl implements ProductService {
 		}
 		catch(Exception e){
 			System.out.println("Something went wrong.");
+		}
+	}
+
+	@Override
+	public void updateProduct(ProductBean product, MultipartFile productImg) {
+		// TODO Auto-generated method stub
+		System.out.println(product);
+		try {
+			Binary BinaryProductImage = new Binary(BsonBinarySubType.BINARY, productImg.getBytes());
+			ProductWM productmongo = new ProductWM(product.getProductId(), product.getProductName(), BinaryProductImage, product.getProductType(), product.getProductColor(), product.getProductSize(), product.getProductBrand(), product.getProductPrice(), product.getProductQty(), product.getProductSaller(), product.getProductDiscription(), 0);
+			productRepository.save(productmongo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

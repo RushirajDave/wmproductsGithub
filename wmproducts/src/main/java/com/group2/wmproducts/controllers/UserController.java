@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -69,7 +68,13 @@ public class UserController {
 	public String addToCart(@SessionAttribute("sessiondata") SessionData sessiondata, @RequestParam(value = "productId", required = true) String productId, @RequestParam(value = "productQty", required = true) String productQty) {
 		String userId = userService.findUserIdbyEmail(sessiondata.userEmailId);
 		userService.addToCart(userId, productId, productQty);
-		return "home";
+		return "redirect:/cart";
+	}
+	@PostMapping("/removeFromCart")
+	public String removeFromCart(@SessionAttribute("sessiondata") SessionData sessiondata, @RequestParam(value = "productId", required = true) String productId) {
+		String userId = userService.findUserIdbyEmail(sessiondata.userEmailId);
+		userService.removeFromCart(userId, productId);
+		return "redirect:/cart";
 	}
 	@GetMapping("/cart")
 	public String cart(@SessionAttribute("sessiondata") SessionData sessiondata, Model model) {
@@ -79,10 +84,12 @@ public class UserController {
 		List<ProductBean> cartProductsList = new ArrayList<ProductBean>();
 		List<String> productImgList = new ArrayList<String>();
 		ProductBean product = new ProductBean();
+		Integer cartTotal = 0; 
 		for (Map.Entry<String,Integer> entry : cartProducts.entrySet())  {
 			product = userService.getCartProduct(entry.getKey());
 			cartProductsList.add(product);
 			productQtyList.add(entry.getValue());
+			cartTotal += entry.getValue()*Integer.parseInt(product.getProductPrice());
 		}
 		for(int i=0; i<cartProductsList.size(); i++) {
 			productImgList.add(Base64.getEncoder().encodeToString(cartProductsList.get(i).getProductImage().getData()));
@@ -91,6 +98,7 @@ public class UserController {
 		System.out.println(cartProducts);
 		System.out.println(cartProductsList);
 		System.out.println(productQtyList);
+		model.addAttribute("cartTotal", cartTotal);
 		model.addAttribute("mycartProduct", cartProductsList);
 		model.addAttribute("mycartQty", productQtyList);
 		return "cart";

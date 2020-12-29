@@ -36,6 +36,9 @@ public class ProductBean {
 		this.productDiscription = productDiscription;
 		this.productAvrRating = productAvrRating;
 	}
+	public void setProductId(String productId) {
+		this.productId = productId;
+	}
 	public String getProductId() {
 		return productId;
 	}

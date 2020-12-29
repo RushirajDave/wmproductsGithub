@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +11,16 @@
 
     <div class="sidenav">
         <h1 style="color: White;">WM Products</h1><br><br>
-        <a href="Admin.html" class="nav-link"><h4>Admin</h4></a>
-        <a href="Manage-Products.html" class="nav-link"><h4>Manage Products</h4></a>
-        <a href="#" class="nav-link"><h4>Manage Orders</h4></a>
-        <a href="#" class="nav-link"><h4>Selling Informations</h4></a>
+        
+        <form th:action="@{/allProducts}" method="get">
+        	<button class="btn btn-link"><h4>Manage Products</h4></button>
+        </form>
+        <form th:action="@{/adminOrders}" method="get">
+        	<button class="btn btn-link"><h4>Manage Orders</h4></button>
+        </form>
+        <form action="">
+        	<button class="btn btn-link"><h4>Selling Informations</h4></button>
+        </form>
       </div>
 
       <div class="container align-self-center" style="text-align: center;">
@@ -25,7 +31,7 @@
       
       
       <div style="left: 300px;position: relative;">
-        <table class="table" style="right: 0;">
+        <table class="table table-bordered table-responsive" style="right: 0;">
             <thead>
               <tr>
                 <th scope="col">orderId</th>
@@ -37,13 +43,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Manav1234</td>
-                <td>12135</td>
-                <td>1</td>
-                <td>500</td>
-                <td>address</td>
+              <tr th:each="order, index : ${orders}">
+                <th th:text="${order.orderId}" scope="row"></th>
+                <td th:text="${order.userId}"></td>
+                <td th:text="${order.productId}"></td>
+                <td th:text="${order.productQty}"></td>
+                <td th:text="${order.totalPrice=999}"></td>
+                <td th:text="${order. orderAddress}"></td>
               </tr>
             </tbody>
           </table>

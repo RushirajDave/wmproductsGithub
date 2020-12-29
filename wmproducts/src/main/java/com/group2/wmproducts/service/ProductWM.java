@@ -107,5 +107,13 @@ public class ProductWM {
 	public void setProductAvrRating(float productAvrRating) {
 		this.productAvrRating = productAvrRating;
 	}
+	@Override
+	public String toString() {
+		return "ProductWM [productId=" + productId + ", productName=" + productName + ", productImage=" + productImage
+				+ ", productType=" + productType + ", productColor=" + productColor + ", productSize=" + productSize
+				+ ", productBrand=" + productBrand + ", productPrice=" + productPrice + ", productQty=" + productQty
+				+ ", productSaller=" + productSaller + ", productDiscription=" + productDiscription
+				+ ", productAvrRating=" + productAvrRating + "]";
+	}
 	
 }

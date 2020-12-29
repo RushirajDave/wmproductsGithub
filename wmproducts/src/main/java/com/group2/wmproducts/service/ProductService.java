@@ -8,7 +8,9 @@ import com.group2.wmproducts.model.ProductBean;
 
 public interface ProductService {
 	public abstract void newProduct(ProductBean product, MultipartFile productImg);
+	public abstract void updateProduct(ProductBean product, MultipartFile productImg);
 	public abstract ProductBean findProduct(String productId);
 	public abstract List<ProductBean> getAllProducts();
 	public abstract void deleteProduct(String productId);
+	public abstract List<ProductBean> getSearchProducts(String search);
 }
