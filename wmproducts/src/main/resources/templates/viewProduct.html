@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7812885230.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark justify-content-sm-start bg-primary navbar-dark fixed-top">
+
+        <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 mr-auto" href="#">WM Products</a>
+
+        <button class="navbar-toggler align-self-start" type="button">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+      
+        <div class="collapse navbar-collapse d-flex flex-column bg-dark flex-lg-row flex-xl-row justify-content-lg-end mobileMenu p-3 p-lg-0 mt-5 mt-lg-0 open" id="navbarSupportedContent">
+
+          <ul class="navbar-nav align-self-stretch">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0 mr-sm-2">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/WMProducts}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-home"></i>Home</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/cart}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Cart</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/myOrders}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-gifts"></i>Orders</button>
+            </form>
+            </li>
+            
+            <li class="nav-item">
+            <form th:action="@{/logout}" method="get">
+              <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i>Logout</button>
+            </form>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="overlay"></div>
+
+      <div style="margin-top: 50px;"></div>
+      <div class="container align-self-center p-3 mt-3 ">
+          <h3 style="text-align: center;" th:text="${product.productName}"></h3>
+      </div>    
+
+
+      <div class="container align-self-center p-3 mt-3" style="text-align: center;">
+
+            <img height="300" alt="Product image" th:src="*{'data:image/png;base64,'+productImg}"> 
+
+            <div class="container align-self-center p-1 mt-1" style="text-align: center;">
+            <form th:action="@{/addToCart}" method="post">  
+              <input type="hidden"  th:value="${product.productId}" th:name="productId" required>
+              <input type="text" value="1" th:name="productQty" required>
+              <button type="submit" class="align-self-center">Add to Cart</button>
+            </form>
+            </div>
+            <div class="container align-self-center p-1 mt-1" style="text-align: center;">
+              <button class="align-self-center">Add to Wishlist</button>
+            </div>
+            <h3>Price: <span th:text="${product.productPrice}"></span></h3> 
+            <h3>Type: <span th:text="${product.productType}"></span></h3>
+            <h3>Color: <span th:text="${product.productColor}"></span></h3>
+            <h3>Company: <span th:text="${product.productBrand}"></span></h3>
+            <h3>Description: <span th:text="${product.productDiscription}"></span></h3>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/main.js.js"></script>
+</body>
+</html>

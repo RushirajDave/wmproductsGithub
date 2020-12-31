@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/Admin.css">
+</head>
+<body class="alert alert-info">
+
+    <div class="sidenav">
+        <h1 style="color: White;">WM Products</h1><br><br>
+        
+        <form th:action="@{/allProducts}" method="get">
+        	<button class="btn btn-link"><h4>Manage Products</h4></button>
+        </form>
+        <form th:action="@{/adminOrders}" method="get">
+        	<button class="btn btn-link"><h4>Manage Orders</h4></button>
+        </form>
+        <form action="">
+        	<button class="btn btn-link"><h4>Selling Informations</h4></button>
+        </form>
+      </div>
+
+      <div class="container align-self-center" style="text-align: center;">
+          <h2>Admin Page </h2>
+          
+      </div>
+      <div class="container mt-3">
+        <div class="d-flex justify-content-center mb-3">
+      <form class="was-validated" action="#" th:action="@{/newProduct}" method="post" th:object="${product}" enctype="multipart/form-data">
+        <div class="form-group">
+          <label id="texcolr" for="image"><b>Product image</b></label>
+          <input type="file" class="form-control"  placeholder="Select product image" th:name="productImg" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="name"><b>Product name</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product name" th:field="*{productName}" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="type"><b>Product type</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product type" th:field="*{productType}" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="color"><b>Product color</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product color" th:field="*{productColor}" required>
+        </div>
+        <div class="form-group">    
+          <label id="texcolr" for="size"><b>Product size</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product size" th:field="*{productSize}" required>
+        </div>
+        <div class="form-group">    
+          <label id="texcolr" for="brand"><b>Product brand</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product brand" th:field="*{productBrand}" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="price"><b>Price</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product Price" th:field="*{productPrice}" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="quantity"><b>Quantity</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product quantity" th:field="*{productQty}" required> 
+        </div>
+        <div class="form-group">    
+          <label id="texcolr" for="seller"><b>Seller</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product seller" th:field="*{productSaller}" required>
+        </div>
+        <div class="form-group">
+          <label id="texcolr" for="description"><b>Description</b></label>
+          <input type="text" class="form-control"  placeholder="Enter product description" th:field="*{productDiscription}" required>
+        </div>
+        <button class="btn btn-primary" type="submit">ADD</button> 
+        <!--  id="logbutton" -->
+      </form>
+    </div>
+  </div>
+
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

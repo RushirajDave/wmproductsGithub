@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/Admin.css">
+</head>
+<body>
+
+    <div class="sidenav">
+        <h1 style="color: White;">WM Products</h1><br><br>
+        
+        <form th:action="@{/allProducts}" method="get">
+        	<button class="btn btn-link"><h4>Manage Products</h4></button>
+        </form>
+        <form th:action="@{/adminOrders}" method="get">
+        	<button class="btn btn-link"><h4>Manage Orders</h4></button>
+        </form>
+        <form action="">
+        	<button class="btn btn-link"><h4>Selling Informations</h4></button>
+        </form>
+      </div>
+
+      <div class="container align-self-center" style="text-align: center;">
+          <h2>Manage-Orders</h2>
+          
+      </div>
+
+      
+      
+      <div style="left: 300px;position: relative;">
+        <table class="table table-bordered table-responsive" style="right: 0;">
+            <thead>
+              <tr>
+                <th scope="col">orderId</th>
+                <th scope="col">userId</th>
+                <th scope="col">productId</th>
+                <th scope="col">productQty</th>
+                <th scope="col">totalPrice</th>
+                <th scope="col">orderAddress</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr th:each="order, index : ${orders}">
+                <th th:text="${order.orderId}" scope="row"></th>
+                <td th:text="${order.userId}"></td>
+                <td th:text="${order.productId}"></td>
+                <td th:text="${order.productQty}"></td>
+                <td th:text="${order.totalPrice=999}"></td>
+                <td th:text="${order. orderAddress}"></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  </html>

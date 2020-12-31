@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/7812885230.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/cart.css">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-dark justify-content-sm-start bg-primary navbar-dark fixed-top">
+
+        <a class="navbar-brand order-1 order-lg-0 ml-lg-0 ml-2 mr-auto" href="#">WM Products</a>
+
+        <button class="navbar-toggler align-self-start" type="button">
+
+          <span class="navbar-toggler-icon"></span>
+
+        </button>
+      
+        <div class="collapse navbar-collapse d-flex flex-column bg-dark flex-lg-row flex-xl-row justify-content-lg-end mobileMenu p-3 p-lg-0 mt-5 mt-lg-0 open" id="navbarSupportedContent">
+
+          <ul class="navbar-nav align-self-stretch">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0 mr-sm-2">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/WMProducts}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-home"></i>Home</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/cart}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>Cart</button>
+            </form>
+            </li>
+            <li class="nav-item">
+            <form th:action="@{/myOrders}" method="get">
+            	<button class="btn btn-link" type="submit"><i class="fas fa-gifts"></i>Orders</button>
+            </form>
+            </li>
+            
+            <li class="nav-item">
+            <form th:action="@{/logout}" method="get">
+              <button type="submit" class="btn btn-danger"><i class="fas fa-sign-out-alt"></i>Logout</button>
+            </form>
+            </li>
+          </ul>
+          
+        </div>
+      </nav>
+      <div class="overlay"></div>
+
+      <div style="margin-top: 50px;"></div>
+      <div class="container align-self-center p-3 mt-3 ">
+          <i class="icon-shopping-cart"></i><h3 style="text-align: center;"> Cart Products</h3>
+      </div>
+
+ <div class="cart_section">
+     <div class="container-fluid">
+         <div class="row">
+             <div class="col-lg-10 offset-lg-1">
+                 <div class="cart_container">
+                     <div class="cart_title">Shopping Cart<small> (1 item in your cart) </small></div>
+                     <div class="cart_items"> <!--1 one item-->
+                         <ul class="cart_list">
+                             <li class="cart_item clearfix" th:each="product, index : ${mycartProduct}">
+                                 <div class="cart_item_image"><img width="110" th:src="*{'data:image/png;base64,'+productImg[index.index]}" alt=""></div>
+                                 <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                     <div class="cart_item_name cart_info_col">
+                                         <div class="cart_item_title">Name</div>
+                                         <div class="cart_item_text" th:text="${product.productName}"></div>
+                                     </div>
+                                     <div class="cart_item_color cart_info_col">
+                                         <div class="cart_item_title">Color</div>
+                                         <div class="cart_item_text" th:text="${product.productColor}"><span style="background-color:#999999;"></span>Silver</div>
+                                     </div>
+                                     <div class="cart_item_quantity cart_info_col">
+                                         <div class="cart_item_title">Quantity</div>
+                                         <div class="cart_item_text" th:text="${mycartQty[index.index]}"></div>
+                                     </div>
+                                     <div class="cart_item_total cart_info_col">
+                                         <div class="cart_item_title">Size</div>
+                                         <div class="cart_item_text" th:text="${product.productSize}"></div>
+                                     </div>
+                                     <div class="cart_item_price cart_info_col">
+                                         <div class="cart_item_title">Price</div>
+                                         <div class="cart_item_text" th:text="${product.productPrice}"></div>
+                                     </div>
+                                     <div class="cart_item_total cart_info_col">
+                                     	<form  th:action="@{/removeFromCart}" method="post">
+                                       		<input type="hidden" th:name="productId" th:value="${product.productId}">              		
+                                     		<div class="cart_item_title p-5 col-2"><button type="submit" class="btn btn-danger">Remove</button></div>
+                                     	</form>
+                                     </div>
+                                 </div>
+                             </li>
+                         </ul>
+                     </div>
+                     <div class="order_total">
+                         <div class="order_total_content text-md-right">
+                             <div class="order_total_title">Order Total:</div>
+                             <div class="order_total_amount" th:text="${cartTotal}"></div>
+                         </div>
+                     </div>
+                     <form  th:action="@{/newOrder}" method="post">
+                     	<button type="submit" class="button cart_button_checkout">Check Out</button> 
+                     </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+ </div>
+
+
+    <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
